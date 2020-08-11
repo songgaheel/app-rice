@@ -1,0 +1,53 @@
+import 'package:apprice/screen/feed.dart';
+import 'package:flutter/material.dart';
+
+class MainScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.deepOrangeAccent,
+          title: Center(child: const Text('แอพพลิเคชัน')),
+          bottom: TabBar(
+            labelColor: Colors.black,
+            unselectedLabelColor: Colors.white,
+            labelStyle: TextStyle(fontSize: 10.0),
+            tabs: <Widget>[
+              Tab(
+                text: 'News Feed',
+                icon: Icon(Icons.assignment),
+              ),
+              Tab(
+                text: 'RKB',
+                icon: Icon(Icons.book),
+              ),
+              Tab(
+                text: 'Weather',
+                icon: Icon(Icons.cloud),
+              ),
+              Tab(
+                text: 'Market',
+                icon: Icon(Icons.store),
+              ),
+              Tab(
+                text: 'Account',
+                icon: Icon(Icons.account_circle),
+              ),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            Feed(),
+            Text('2'),
+            Text('3'),
+            Text('4'),
+            Text('5'),
+          ],
+        ),
+      ),
+    );
+  }
+}
