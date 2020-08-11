@@ -16,7 +16,7 @@ class MainScreen extends StatelessWidget {
             labelStyle: TextStyle(fontSize: 10.0),
             tabs: <Widget>[
               Tab(
-                text: 'News Feed',
+                text: 'กิจกรรม',
                 icon: Icon(Icons.assignment),
               ),
               Tab(
@@ -24,15 +24,15 @@ class MainScreen extends StatelessWidget {
                 icon: Icon(Icons.book),
               ),
               Tab(
-                text: 'Weather',
+                text: 'สภาพอากาศ',
                 icon: Icon(Icons.cloud),
               ),
               Tab(
-                text: 'Market',
+                text: 'ราคาข้าว',
                 icon: Icon(Icons.store),
               ),
               Tab(
-                text: 'Account',
+                text: 'บัญชี',
                 icon: Icon(Icons.account_circle),
               ),
             ],
