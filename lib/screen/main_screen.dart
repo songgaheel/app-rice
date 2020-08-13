@@ -1,4 +1,4 @@
-import 'package:apprice/screen/feed.dart';
+import 'feed.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatelessWidget {
