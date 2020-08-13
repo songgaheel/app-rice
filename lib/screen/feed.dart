@@ -6,13 +6,30 @@ class Feed extends StatefulWidget {
 }
 
 class _FeedState extends State<Feed> {
+  int _selectedIndex = 0;
+  List<Widget> _pageWidget = <Widget>[
+    Text('เพิ่มที่นาใหม่'),
+    Text('ประเมินพันธุ์'),
+    Text('การแจ้งเตือน'),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => _pageWidget.elementAt(_selectedIndex)));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        padding: EdgeInsets.all(10),
-        children: <Widget>[
-          Card(
+      body: ListView.builder(
+        itemCount: 3,
+        itemBuilder: (context, i) {
+          return Card(
             child: Container(
               height: 300,
               color: Colors.white,
@@ -23,7 +40,7 @@ class _FeedState extends State<Feed> {
                       Icons.location_on,
                       size: 40,
                     ),
-                    title: Text('Farm A'),
+                    title: Text('$i'),
                     subtitle: Text('Date Month Year'),
                   ),
                   ListTile(
@@ -45,55 +62,29 @@ class _FeedState extends State<Feed> {
                 ],
               ),
             ),
-          ),
-          Card(
-            child: Container(
-              height: 300,
-              color: Colors.white,
-              child: Column(
-                children: <Widget>[
-                  ListTile(
-                    leading: CircleAvatar(),
-                    title: Text('นครนายก องครักษ์'),
-                    subtitle: Text('02 สิงหาคม 2563'),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.check_circle),
-                    title: Text('ตรวจสอบการให้น้ำ ระดับน้ำ 3 ซม.'),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.check_circle),
-                    title: Text('กำจัดวัชพืช'),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.check_circle),
-                    title: Text('ตรวจสอบหอยเชอรี่และปูนา'),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.check_circle),
-                    title: Text('ตรวจสอบหนอนกระทู้กล้า'),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+          );
+        },
+        padding: EdgeInsets.all(10),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.add_circle),
-            title: Text('สร้างที่นาใหม่'),
+            title: Text('เพิ่มที่นาใหม่'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.event_available),
-            title: Text('ประเมิณพันธ์ข้าว'),
+            title: Text('ประเมินพันธุ์'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            title: Text('แจ้งเตือน'),
+            icon: Icon(Icons.notification_important),
+            title: Text('การแจ้งเตือน'),
           ),
         ],
+        selectedItemColor: Colors.grey,
+        unselectedItemColor: Colors.grey,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
