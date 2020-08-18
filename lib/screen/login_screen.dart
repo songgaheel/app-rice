@@ -117,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5,
-        onPressed: () => Navigator.push(
+        onPressed: () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => MainScreen())),
         padding: EdgeInsets.all(15),
         shape: RoundedRectangleBorder(
