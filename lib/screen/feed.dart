@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'notification_screen.dart';
+
 class Feed extends StatefulWidget {
   @override
   _FeedState createState() => _FeedState();
@@ -10,7 +12,7 @@ class _FeedState extends State<Feed> {
   List<Widget> _pageWidget = <Widget>[
     Text('เพิ่มที่นาใหม่'),
     Text('ประเมินพันธุ์'),
-    Text('การแจ้งเตือน'),
+    NotificationScreen(),
   ];
 
   void _onItemTapped(int index) {
