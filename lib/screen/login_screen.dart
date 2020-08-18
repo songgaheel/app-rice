@@ -8,7 +8,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool _remenberMe = false;
+  //bool _remenberMe = false;
   Widget _buildUserfrom() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
                   Icons.supervised_user_circle,
-                  color: Colors.white,
+                  color: Colors.grey,
                 ),
                 hintText: 'กรอกชื่อผู้ใช้',
                 hintStyle: kHintTextStyle),
@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
                   Icons.phone,
-                  color: Colors.white,
+                  color: Colors.grey,
                 ),
                 hintText: 'หมายเลขโทรศัพท์',
                 hintStyle: kHintTextStyle),
@@ -127,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Text(
           'เข้าสู่ระบบ',
           style: TextStyle(
-              color: Color(0xff527daa),
+              color: Colors.black,
               letterSpacing: 1.5,
               fontSize: 18,
               fontWeight: FontWeight.bold),
@@ -150,10 +150,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color(0xff73aef5),
-                  Color(0xff73aeff),
-                  Color(0xff73aa00),
-                  Color(0xff7300f5),
+                  Colors.grey,
+                  Colors.white,
+                  Colors.grey,
+                  Colors.white,
                 ],
                 stops: [0.1, 0.4, 0.7, 0.9],
               ),
@@ -173,7 +173,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text(
                     'ลงชื่อเข้าใช้',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                     ),

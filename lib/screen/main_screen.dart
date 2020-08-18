@@ -8,6 +8,7 @@ class MainScreen extends StatelessWidget {
       length: 5,
       child: Scaffold(
         appBar: AppBar(
+          //automaticallyImplyLeading: false,
           backgroundColor: Colors.deepOrangeAccent,
           title: Center(child: const Text('แอพพลิเคชัน')),
           bottom: TabBar(

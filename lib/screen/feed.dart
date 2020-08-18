@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'create_farm_screen.dart';
 import 'notification_screen.dart';
 
 class Feed extends StatefulWidget {
@@ -10,7 +11,7 @@ class Feed extends StatefulWidget {
 class _FeedState extends State<Feed> {
   int _selectedIndex = 0;
   List<Widget> _pageWidget = <Widget>[
-    Text('เพิ่มที่นาใหม่'),
+    CreateFarmScreen(),
     Text('ประเมินพันธุ์'),
     NotificationScreen(),
   ];
