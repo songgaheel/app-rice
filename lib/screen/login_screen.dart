@@ -14,7 +14,7 @@ class _LoginScreenState extends State<LoginScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'ชื่อผู้ใช้',
+          'รหัสผ่าน',
           style: kLabelStyle,
         ),
         SizedBox(height: 10),
@@ -29,10 +29,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.only(top: 14),
                 prefixIcon: Icon(
-                  Icons.supervised_user_circle,
+                  Icons.vpn_key,
                   color: Colors.grey,
                 ),
-                hintText: 'กรอกชื่อผู้ใช้',
+                hintText: 'กรอกรหัสผ่าน',
                 hintStyle: kHintTextStyle),
           ),
         )
@@ -136,6 +136,31 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  Widget _buildRegisterButton() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 25),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5,
+        onPressed: () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => MainScreen())),
+        padding: EdgeInsets.all(15),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+        color: Colors.white,
+        child: Text(
+          'ลงทะเบียน',
+          style: TextStyle(
+              color: Colors.black,
+              letterSpacing: 1.5,
+              fontSize: 18,
+              fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,10 +175,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Colors.grey,
-                  Colors.white,
-                  Colors.grey,
-                  Colors.white,
+                  Colors.white70,
+                  Colors.white70,
+                  Colors.white70,
+                  Colors.white70,
                 ],
                 stops: [0.1, 0.4, 0.7, 0.9],
               ),
@@ -179,14 +204,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   SizedBox(height: 30),
-                  _buildUserfrom(),
+                  _buildPhonefrom(),
+
                   SizedBox(
                     height: 30,
                   ),
-                  _buildPhonefrom(),
+                  _buildUserfrom(),
                   _buildForgetSingInData(),
                   //_buildRememberMe(),
-                  _buildLoginButton()
+                  _buildLoginButton(),
+                  _buildRegisterButton()
                 ],
               ),
             ),

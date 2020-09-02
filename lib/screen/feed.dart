@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'create_farm_screen.dart';
 import 'notification_screen.dart';
+import 'evaluate_varities_screes.dart';
 
 class Feed extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _FeedState extends State<Feed> {
   int _selectedIndex = 0;
   List<Widget> _pageWidget = <Widget>[
     CreateFarmScreen(),
-    Text('ประเมินพันธุ์'),
+    EvaluateVarityScreen(),
     NotificationScreen(),
   ];
 

@@ -1,61 +1,66 @@
+import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
-import 'create_farm_eval_varietie.dart';
-import 'evaluate_varieties_screes.dart';
-import 'main_screen.dart';
+import 'create_farm_result_profit.dart';
 
-class CreateFarmScreen extends StatefulWidget {
+class FarmEvaluateVarityScreen extends StatefulWidget {
   @override
-  _CreateFarmScreenState createState() => _CreateFarmScreenState();
+  _FarmEvaluateVarityScreen createState() => _FarmEvaluateVarityScreen();
 }
 
-class _CreateFarmScreenState extends State<CreateFarmScreen> {
+class _FarmEvaluateVarityScreen extends State<FarmEvaluateVarityScreen> {
+  String _myActivity;
+  String _myActivityResult;
+  final formKey = new GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _myActivity = '';
+    _myActivityResult = '';
+  }
+
   Widget _buildFarmNameTB() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'ข้อมูลที่นา',
-          style: kLabelStyle,
-        ),
         SizedBox(height: 10),
         Container(
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           decoration: kBoxDecorationStyle,
-          height: 60,
-          child: TextField(
-            keyboardType: TextInputType.emailAddress,
-            style: TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-                prefixIcon: Icon(
-                  Icons.landscape,
-                  color: Colors.grey,
-                ),
-                hintText: 'ชื่อที่นา',
-                hintStyle: kHintTextStyle),
+          child: DropDownFormField(
+            titleText: 'ตัวเลือกการประเมิน',
+            hintText: 'กรุณาเลือก',
+            value: _myActivity,
+            onSaved: (value) {
+              setState(() {
+                _myActivity = value;
+              });
+            },
+            onChanged: (value) {
+              setState(() {
+                _myActivity = value;
+              });
+            },
+            dataSource: [
+              {
+                "display": "พันธ์ที่ให้กำไรสูงสุด",
+                "value": "Profit",
+              },
+              {
+                "display": "พันธ์ที่ให้ต้นทุนต่ำสุด",
+                "value": "Cost",
+              },
+              {
+                "display": "พันธุ์ที่เลือก",
+                "value": "Varieties",
+              }
+            ],
+            textField: 'display',
+            valueField: 'value',
           ),
         ),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60,
-          child: TextField(
-            keyboardType: TextInputType.emailAddress,
-            style: TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-                prefixIcon: Icon(
-                  Icons.landscape,
-                  color: Colors.grey,
-                ),
-                hintText: 'ขนาดพื้นที่',
-                hintStyle: kHintTextStyle),
-          ),
-        )
       ],
     );
   }
@@ -83,28 +88,10 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
                   Icons.landscape,
                   color: Colors.grey,
                 ),
-                hintText: 'ภาค',
+                hintText: 'ชื่อที่นา',
                 hintStyle: kHintTextStyle),
           ),
         ),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60,
-          child: TextField(
-            keyboardType: TextInputType.emailAddress,
-            style: TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-                prefixIcon: Icon(
-                  Icons.landscape,
-                  color: Colors.grey,
-                ),
-                hintText: 'จังหวัด',
-                hintStyle: kHintTextStyle),
-          ),
-        )
       ],
     );
   }
@@ -120,7 +107,7 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
             elevation: 5,
             onPressed: () => Navigator.pop(context),
             padding: EdgeInsets.symmetric(
-              horizontal: 35,
+              horizontal: 45,
               vertical: 15,
             ),
             shape: RoundedRectangleBorder(
@@ -128,7 +115,7 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
             ),
             color: Colors.white,
             child: Text(
-              'เสร็จสิ้น',
+              'กลับ',
               style: TextStyle(
                   color: Colors.black,
                   letterSpacing: 1.5,
@@ -138,12 +125,17 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
           ),
           RaisedButton(
             elevation: 5,
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => FarmEvaluateVarityScreen())),
+            onPressed: () {
+              if (_myActivity == 'Profit') {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => EvalResultProfit()));
+              }
+              print('ประเมิน');
+            },
             padding: EdgeInsets.symmetric(
-              horizontal: 25,
+              horizontal: 40,
               vertical: 15,
             ),
             shape: RoundedRectangleBorder(
@@ -151,7 +143,7 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
             ),
             color: Colors.white,
             child: Text(
-              'ประเมินพันธุ์',
+              'ประเมิน',
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
@@ -167,7 +159,7 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('สร้างที่นา'),
+        title: Text('ประเมินพันธุ์'),
         backgroundColor: Colors.deepOrangeAccent,
       ),
       body: Stack(
@@ -201,7 +193,7 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'สร้างที่นาใหม่',
+                    'ประเมิณพันธุ์',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 30,

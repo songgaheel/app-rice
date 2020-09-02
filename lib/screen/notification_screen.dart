@@ -10,7 +10,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Notification'),
+          title: Text('การแจ้งเตือน'),
           backgroundColor: Colors.deepOrangeAccent,
         ),
         body: ListView.builder(
