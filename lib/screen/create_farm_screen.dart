@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 import 'create_farm_eval_varietie.dart';
-import 'evaluate_varieties_screes.dart';
-import 'main_screen.dart';
 
 class CreateFarmScreen extends StatefulWidget {
   @override

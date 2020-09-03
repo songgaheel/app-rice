@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'create_farm_screen.dart';
 import 'notification_screen.dart';
-import 'evaluate_varities_screes.dart';
+import 'evaluate_varieties_screes.dart';
 
 class Feed extends StatefulWidget {
   @override

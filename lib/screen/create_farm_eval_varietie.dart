@@ -105,32 +105,14 @@ class _FarmEvaluateVarityScreen extends State<FarmEvaluateVarityScreen> {
         children: [
           RaisedButton(
             elevation: 5,
-            onPressed: () => Navigator.pop(context),
-            padding: EdgeInsets.symmetric(
-              horizontal: 45,
-              vertical: 15,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
-            color: Colors.white,
-            child: Text(
-              'กลับ',
-              style: TextStyle(
-                  color: Colors.black,
-                  letterSpacing: 1.5,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-          RaisedButton(
-            elevation: 5,
             onPressed: () {
               if (_myActivity == 'Profit') {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => EvalResultProfit()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EvalResultProfit(),
+                  ),
+                );
               }
               print('ประเมิน');
             },
